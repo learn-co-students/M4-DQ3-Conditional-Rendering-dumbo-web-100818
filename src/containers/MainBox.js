@@ -4,6 +4,17 @@ import { Profile, Photos, Cocktails, Pokemon} from '../components/Pages.js'
 
 class MainBox extends React.Component {
 
+  handleUserClick=(e)=>{
+    if(e.target.id === "profile"){
+      console.log("profile click")
+    }else if(e.target.id === "photo"){
+      console.log("photo click")
+    }else if(e.target.id === "cocktail"){
+      console.log("cocktail click")
+    }else if(e.target.id === "pokemon"){
+      console.log("pokemon click")
+    }
+  }
 
   render() {
 
@@ -13,12 +24,12 @@ class MainBox extends React.Component {
 
     */
 
-    const detailsToDisplay = <div>Hi, I'm a div!</div>
+
 
     return (
       <div>
-        <MenuBar />
-        {detailsToDisplay}
+        <MenuBar clickHandler={this.handleUserClick}/>
+
       </div>
     )
   }
