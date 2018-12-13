@@ -2,18 +2,33 @@ import React from 'react'
 import MenuBar from '../components/MenuBar.js'
 import { Profile, Photos, Cocktails, Pokemon} from '../components/Pages.js'
 
+
 class MainBox extends React.Component {
 
+  state={
+    isClicked: ''
+  }
+
   handleUserClick=(e)=>{
-    if(e.target.id === "profile"){
-      console.log("profile click")
-    }else if(e.target.id === "photo"){
-      console.log("photo click")
-    }else if(e.target.id === "cocktail"){
-      console.log("cocktail click")
-    }else if(e.target.id === "pokemon"){
-      console.log("pokemon click")
+    this.handleClick(e.target.id)
+  }
+
+
+
+  handleClick =(e)=>{
+      let clicked;
+    if(e === "profile"){
+      clicked= <Profile/>
+    }else if(e === "photo"){
+      clicked= <Photos/>
+    }else if(e === "cocktail"){
+      clicked =<Cocktails/>
+    }else if(e === "pokemon"){
+      clicked= <Pokemon/>
     }
+    this.setState({
+      isClicked:clicked
+    })
   }
 
   render() {
@@ -29,7 +44,7 @@ class MainBox extends React.Component {
     return (
       <div>
         <MenuBar clickHandler={this.handleUserClick}/>
-
+        {this.state.isClicked}
       </div>
     )
   }
